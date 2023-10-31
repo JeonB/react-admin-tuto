@@ -1,12 +1,11 @@
-/* import jsonServerProvider from "ra-data-json-server";
+import jsonServerProvider from "ra-data-json-server";
 
 export const dataProvider = jsonServerProvider(
   import.meta.env.VITE_JSON_SERVER_URL
 );
- */
 
 //my.api.url
-import { DataProvider, fetchUtils } from "react-admin";
+/* import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
 const apiUrl = "https://my.api.com/";
@@ -104,4 +103,4 @@ export const dataProvider: DataProvider = {
       method: "DELETE",
     }).then(({ json }) => ({ data: json }));
   },
-};
+}; */

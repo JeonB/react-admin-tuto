@@ -30,5 +30,6 @@ export const App = () => (
       recordRepresentation="name"
       icon={UserIcon}
     />
+    <Resource name="services/obpcommon/api/sojeon" />
   </Admin>
 );
