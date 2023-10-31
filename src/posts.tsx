@@ -9,6 +9,7 @@ import {
   SimpleForm,
   ReferenceInput,
   TextInput,
+  useRecordContext,
 } from "react-admin";
 
 export const PostList = () => (
@@ -24,8 +25,13 @@ export const PostList = () => (
   </List>
 );
 
+const PostTitle = () => {
+  const record = useRecordContext();
+  return <span>Post {record ? `"${record.title}"` : ""}</span>;
+};
+
 export const PostEdit = () => (
-  <Edit>
+  <Edit title={<PostTitle />}>
     <SimpleForm>
       <TextInput source="id" InputProps={{ disabled: true }} />
       <ReferenceInput source="userId" reference="users" />
