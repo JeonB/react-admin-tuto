@@ -31,5 +31,6 @@ export const App = () => (
       icon={UserIcon}
     />
     <Resource name="services/obpcommon/api/sojeon" />
+    <Resource name="services/obpcommon/api/JeonB" />
   </Admin>
 );
