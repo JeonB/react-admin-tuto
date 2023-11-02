@@ -24,6 +24,7 @@ export const App = () => (
       create={PostCreate}
       icon={PostIcon}
     />
+    {/* TODO: 하드코딩을 컴포넌트화 하기 */}
     <Resource
       name="users"
       list={UserList}
