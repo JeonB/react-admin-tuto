@@ -106,35 +106,35 @@ module.exports = {
       template: './public/index.html',
     }),
     new webpack.DefinePlugin({
-      'process.env.WEB_URL': JSON.stringify('http://192.168.11.100:9000'),
-      'process.env.SERVER_API_URL': JSON.stringify('http://gateway.obp:50000'),
+    //   'process.env.WEB_URL': JSON.stringify('http://192.168.11.100:9000'),
+    //   'process.env.SERVER_API_URL': JSON.stringify('http://gateway.obp:50000'),
       
 
-      'process.env.AUTH_URI': JSON.stringify('http://gateway.obp:50000/api/OauthAdmin'),
-      'process.env.OAUTH_SERVER_URI': JSON.stringify('http://www.ifinfo.co.kr:9080'),
+    //   'process.env.AUTH_URI': JSON.stringify('http://gateway.obp:50000/api/OauthAdmin'),
+    //   'process.env.OAUTH_SERVER_URI': JSON.stringify('http://www.ifinfo.co.kr:9080'),
       
-      'process.env.SERVER_IMG_URL': JSON.stringify(
-        'http://gateway.obp:50000/services/obpmedia/api/media',
-      ),
-      'process.env.SERVER_UPLOAD_URL': JSON.stringify(
-        'http://gateway.obp:50000/services/obpmedia/api/upload',
-      ),
-      'process.env.OID_URL': JSON.stringify(
-        'http://gateway.obp:50000/api/OauthMgr',
-      ),
-      'process.env.OID_REALM': JSON.stringify('obp'),
-      'process.env.OID_CLIENT_ID': JSON.stringify('web_app'),
-      'process.env.UNSPLASH_URL': JSON.stringify('https://api.unsplash.com'),
-      'process.env.UNSPLASH_ACCESS_KEY': JSON.stringify(
-        'TIjumfmGZyun7CPpW0a0YWwYos3_bkfC7dGShUaVttU',
-      ),
-      'process.env.UNSPLASH_SECRET_KEY': JSON.stringify(
-        'dcEldlk8cXqmup0A6Cn72MvibAwHviW2YCEs-sHL_UA',
-      ),
-      'process.env.MATTERMOST_URL': JSON.stringify('http://api.mattermost.com'),
-      'process.env.MATTERMOST_TOKEN': 'u5mnssfrc3rytptjg6bfe1mbbr',
-      'process.env.REDUX_LOGGING': true,
-    }),
+    //   'process.env.SERVER_IMG_URL': JSON.stringify(
+    //     'http://gateway.obp:50000/services/obpmedia/api/media',
+    //   ),
+    //   'process.env.SERVER_UPLOAD_URL': JSON.stringify(
+    //     'http://gateway.obp:50000/services/obpmedia/api/upload',
+    //   ),
+    //   'process.env.OID_URL': JSON.stringify(
+    //     'http://gateway.obp:50000/api/OauthMgr',
+    //   ),
+    //   'process.env.OID_REALM': JSON.stringify('obp'),
+    //   'process.env.OID_CLIENT_ID': JSON.stringify('web_app'),
+    //   'process.env.UNSPLASH_URL': JSON.stringify('https://api.unsplash.com'),
+    //   'process.env.UNSPLASH_ACCESS_KEY': JSON.stringify(
+    //     'TIjumfmGZyun7CPpW0a0YWwYos3_bkfC7dGShUaVttU',
+    //   ),
+    //   'process.env.UNSPLASH_SECRET_KEY': JSON.stringify(
+    //     'dcEldlk8cXqmup0A6Cn72MvibAwHviW2YCEs-sHL_UA',
+    //   ),
+    //   'process.env.MATTERMOST_URL': JSON.stringify('http://api.mattermost.com'),
+    //   'process.env.MATTERMOST_TOKEN': 'u5mnssfrc3rytptjg6bfe1mbbr',
+    //   'process.env.REDUX_LOGGING': true,
+    // }),
     // new webpack.DefinePlugin({
     //     'process.env': {
     //       // The root URL for API calls, ending with a '/' - for example: `"https://www.jhipster.tech:8081/myservice/"`.
@@ -153,7 +153,7 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     host: '0.0.0.0', // 외부에서 서버에 접근
-    port: 9000,
+    port: 5173,
     // proxy: [
     //   {
     //     context: ['/api', '/services', '/management', '/v3/api-docs', '/h2-console', '/oauth2', '/login', '/auth'],
