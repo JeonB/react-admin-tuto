@@ -1,125 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-        <meta name="theme-color" content="#000000" />
-        <link rel="manifest" href="./manifest.json" />
-        <link rel="shortcut icon" href="./favicon.ico" />
-        <title>test-admin</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: sans-serif;
-            }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <title>test-admin</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
 
-            .loader-container {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background-color: #fafafa;
-            }
+      .loader-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #fafafa;
+      }
 
-            /* CSS Spinner from https://projects.lukehaas.me/css-loaders/ */
+      /* CSS Spinner from https://projects.lukehaas.me/css-loaders/ */
 
-            .loader,
-            .loader:before,
-            .loader:after {
-                border-radius: 50%;
-            }
+      .loader,
+      .loader:before,
+      .loader:after {
+        border-radius: 50%;
+      }
 
-            .loader {
-                color: #283593;
-                font-size: 11px;
-                text-indent: -99999em;
-                margin: 55px auto;
-                position: relative;
-                width: 10em;
-                height: 10em;
-                box-shadow: inset 0 0 0 1em;
-                -webkit-transform: translateZ(0);
-                -ms-transform: translateZ(0);
-                transform: translateZ(0);
-            }
+      .loader {
+        color: #283593;
+        font-size: 11px;
+        text-indent: -99999em;
+        margin: 55px auto;
+        position: relative;
+        width: 10em;
+        height: 10em;
+        box-shadow: inset 0 0 0 1em;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+      }
 
-            .loader:before,
-            .loader:after {
-                position: absolute;
-                content: '';
-            }
+      .loader:before,
+      .loader:after {
+        position: absolute;
+        content: "";
+      }
 
-            .loader:before {
-                width: 5.2em;
-                height: 10.2em;
-                background: #fafafa;
-                border-radius: 10.2em 0 0 10.2em;
-                top: -0.1em;
-                left: -0.1em;
-                -webkit-transform-origin: 5.2em 5.1em;
-                transform-origin: 5.2em 5.1em;
-                -webkit-animation: load2 2s infinite ease 1.5s;
-                animation: load2 2s infinite ease 1.5s;
-            }
+      .loader:before {
+        width: 5.2em;
+        height: 10.2em;
+        background: #fafafa;
+        border-radius: 10.2em 0 0 10.2em;
+        top: -0.1em;
+        left: -0.1em;
+        -webkit-transform-origin: 5.2em 5.1em;
+        transform-origin: 5.2em 5.1em;
+        -webkit-animation: load2 2s infinite ease 1.5s;
+        animation: load2 2s infinite ease 1.5s;
+      }
 
-            .loader:after {
-                width: 5.2em;
-                height: 10.2em;
-                background: #fafafa;
-                border-radius: 0 10.2em 10.2em 0;
-                top: -0.1em;
-                left: 5.1em;
-                -webkit-transform-origin: 0px 5.1em;
-                transform-origin: 0px 5.1em;
-                -webkit-animation: load2 2s infinite ease;
-                animation: load2 2s infinite ease;
-            }
+      .loader:after {
+        width: 5.2em;
+        height: 10.2em;
+        background: #fafafa;
+        border-radius: 0 10.2em 10.2em 0;
+        top: -0.1em;
+        left: 5.1em;
+        -webkit-transform-origin: 0px 5.1em;
+        transform-origin: 0px 5.1em;
+        -webkit-animation: load2 2s infinite ease;
+        animation: load2 2s infinite ease;
+      }
 
-            @-webkit-keyframes load2 {
-                0% {
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100% {
-                    -webkit-transform: rotate(360deg);
-                    transform: rotate(360deg);
-                }
-            }
+      @-webkit-keyframes load2 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
 
-            @keyframes load2 {
-                0% {
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100% {
-                    -webkit-transform: rotate(360deg);
-                    transform: rotate(360deg);
-                }
-            }
-        </style>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-            rel="stylesheet"
-        />
-    </head>
+      @keyframes load2 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-    <body>
-        <noscript> You need to enable JavaScript to run this app. </noscript>
-        <div id="root">
-            <div class="loader-container">
-                <div class="loader">Loading...</div>
-            </div>
-        </div>
-    </body>
-    <script type="module" src="/src/index.tsx"></script>
+  <body>
+    <button class="btn">Click Me</button>
+
+    <div id="root">
+      <div class="loader-container">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="/src/index.tsx"></script>
+
+  <script>
+    //callback 지옥 문제 해결 => Promise
+    function addName(time, name) {
+      return new Promise((resolve, reject) => {
+        if (name) {
+          setTimeout(() => {
+            console.log(name);
+            resolve();
+          }, time);
+        } else {
+          reject("No such name");
+        }
+      });
+    }
+
+    addName(2000, "Joel2 ")
+      .then(() => addName(2000, "Victoria 2"))
+      .then(() => addName(2000, "John 2"))
+      //rejact -> No such name
+      .then(() => addName(2000, ""))
+      .then(() => addName(2000, "Sarah 2"))
+      .catch((err) => console.log(err));
+  </script>
+
+  <script>
+    let users = [
+      { firstName: "Susan", lastName: "Steward", age: 14, hobby: "Singing" },
+      {
+        firstName: "Daniel",
+        lastName: "Longbottom",
+        age: 16,
+        hobby: "Football",
+      },
+      { firstName: "Jacob", lastName: "Black", age: 15, hobby: "Singing" },
+    ];
+    let singleUser = users.map((user) => {
+      //let's add the firstname and lastname together
+
+      console.log(user.firstName);
+      let fullName = user.firstName + " " + user.lastName;
+      return `
+    <h3 class='name'>${fullName}</h3>
+    <p class="age">${user.age}</p>
+  `;
+    });
+  </script>
+
+  <script>
+    let usersa = [
+      { firstName: "Susan", age: 14 },
+      { firstName: "Daniel", age: 16 },
+      { firstName: "Bruno", age: 56 },
+      { firstName: "Jacob", age: 15 },
+      { firstName: "Sam", age: 64 },
+      { firstName: "Dave", age: 56 },
+      { firstName: "Neils", age: 65 },
+    ];
+
+    // for young people
+    const youngPeople = usersa.filter((person) => {
+      return person.age <= 15;
+    });
+
+    //for senior people
+    const seniorPeople = usersa.filter((person) => person.age >= 50);
+
+    console.log(seniorPeople);
+    console.log(youngPeople);
+
+    const Bruno = usersa.find((person) => person.firstName === "Bruno");
+
+    console.log(Bruno);
+  </script>
+  <!-- destructuring -->
+  <script>
+    let fruits = ["Mango", "Pineapple", "Orange", "Lemon", "Apple"];
+    // let [fruit1, fruit2, fruit3] = fruits;
+    // const [fruit1, , , , fruit5] = fruits;
+    const [, fruit2, , fruit4] = fruits;
+    console.log(fruit2, fruit4);
+  </script>
+  <!-- destructuring Object-->
+  <script>
+    const Roran = {
+      firstName: "Roran",
+      lastName: "Steward",
+      age: 14,
+      hobbies: {
+        hobby1: "singing",
+        hobby2: "dancing",
+      },
+    };
+    const {
+      firstName,
+      age,
+      hobbies: { hobby1 },
+    } = Roran;
+
+    console.log(firstName, age, hobby1);
+
+    function individualData({ firstName, age, hobbies: { hobby1 } }) {
+      console.log(firstName, age, hobby1); //"Roran" 14 "singing"
+    }
+    individualData(Roran);
+  </script>
+  <!-- Rest Operator -->
+  <script>
+    const [firstFruit, secondFruit, ...rest] = fruits;
+
+    console.log(firstFruit, secondFruit, rest);
+  </script>
+
+  <script>
+    const Paka = {
+      firstName: "Paka",
+      lastName: "Steward",
+      ages: 14,
+      hobbies: {
+        hobby1: "singing",
+        hobby2: "dancing",
+      },
+    };
+
+    const { ages, ...resta } = Paka;
+    const gogoring = resta.firstName === "Pakag";
+    console.log(gogoring);
+    console.log(age, resta);
+  </script>
+
+  <script>
+    let pets = ["cat", "dog", "rabbits"];
+
+    let carnivorous = ["lion", "wolf", "leopard", "tiger"];
+    let animals = [...pets, ...carnivorous];
+    console.log(animals);
+  </script>
+  <!-- reduce -->
+  <script>
+    let staffs = [
+      { name: "Susan", age: 14, salary: 100 },
+      { name: "Daniel", age: 16, salary: 120 },
+      { name: "Bruno", age: 56, salary: 400 },
+      { name: "Jacob", age: 15, salary: 110 },
+      { name: "Sam", age: 64, salary: 500 },
+      { name: "Dave", age: 56, salary: 380 },
+      { name: "Neils", age: 65, salary: 540 },
+    ];
+    const totalSalary = staffs.reduce((total, staff) => {
+      total += staff.salary;
+      return total;
+    }, 0);
+    console.log(totalSalary); // 2150
+    const salaryInfo = staffs.reduce(
+      (total, staff) => {
+        let staffTithe = staff.salary * 0.1;
+        total.totalTithe += staffTithe;
+        total["totalSalary"] += staff.salary;
+        return total;
+      },
+      { totalSalary: 0, totalTithe: 0 }
+    );
+
+    console.log(salaryInfo); // { totalSalary: 2150 , totalTithe: 215 }
+  </script>
+  <script>
+    let users2 = [
+      {
+        name: "Sam",
+        age: 64,
+        hobby: "cooking",
+        hobbies: {
+          hobb1: "cooking",
+          hobby2: "sleeping",
+        },
+      },
+      { name: "Bruno", age: 56 },
+      { name: "Dave", age: 56, hobby: "Football" },
+      {
+        name: "Jacob",
+        age: 65,
+        hobbies: {
+          hobb1: "driving",
+          hobby2: "sleeping",
+        },
+      },
+    ];
+
+    users2.forEach((user) => {
+      console.log(user.hobbies && user.hobbies.hobby2);
+    });
+
+    users2.forEach((user) => {
+      console.log(user?.hobbies?.hobby2);
+    });
+  </script>
+  <!-- Fetch Api -->
+  <script>
+    fetch("https://type.fit/api/quotes")
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+
+    fetch("https://type.fit/api/quotes")
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  </script>
+  <!-- Async/Await in JavaScript -->
+  <script>
+    const fetchData = async () => {
+      const quotes = await fetch("https://type.fit/api/quotes");
+      const response = await quotes.json();
+      console.log(response);
+    };
+
+    fetchData();
+
+    const fetchData2 = async () => {
+      try {
+        const quotes = await fetch("https://type.fit/api/quotes");
+        const response = await quotes.json();
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData2();
+  </script>
 </html>
