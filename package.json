@@ -10,6 +10,7 @@
     "format": "prettier --write ./src"
   },
   "dependencies": {
+    "antd": "^5.11.1",
     "ra-data-json-server": "^4.14.0",
     "react": "^18.2.0",
     "react-admin": "^4.14.0",
