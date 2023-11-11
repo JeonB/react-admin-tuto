@@ -1,56 +1,123 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import { Tree } from "antd";
 
-// const { createRoot } = ReactDOM;
+const data = [
+  {
+    id: 1,
+    name: "Root",
+    type: "folder",
+    children: [
+      {
+        id: 2,
+        name: "Child 1",
+        type: "folder",
+        children: [
+          {
+            id: 3,
+            name: "Grand Child",
+            type: "file",
+          },
+        ],
+      },
+      {
+        id: 4,
+        name: "Child 2",
+        type: "folder",
+        children: [
+          {
+            id: 5,
+            name: "Grand Child",
+            type: "folder",
+            children: [
+              {
+                id: 6,
+                name: "Great Grand Child 1",
+                type: "file",
+              },
+              {
+                id: 7,
+                name: "Great Grand Child 2",
+                type: "file",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 8,
+        name: "Child 3",
+        type: "file",
+      },
+    ],
+  },
+];
 
-const x: number = 3;
-const y: number = 2;
-const z: number = 1;
-const defaultData: any[] = [];
-
-const generateData = (_level: number, _preKey?: string, _tns?: any[]) => {
-  const preKey: string = _preKey || "0";
-  const tns: any[] = _tns || defaultData;
-  const children: string[] = [];
-
-  for (let i = 0; i < x; i++) {
-    const key = `${preKey}-${i}`;
-    tns.push({
-      title: key,
-      key,
-    });
-    if (i < y) {
-      children.push(key);
+const convertDataToTree = (data) => {
+  return data.map((item) => {
+    if (item.children) {
+      return {
+        title: item.name,
+        key: String(item.id),
+        children: convertDataToTree(item.children),
+      };
+    } else {
+      return {
+        title: item.name,
+        key: String(item.id),
+      };
     }
-  }
-
-  if (_level < 0) {
-    return tns;
-  }
-
-  const level = _level - 1;
-  children.forEach((key, index) => {
-    tns[index].children = [];
-    return generateData(level, key, tns[index].children);
   });
 };
 
-generateData(z);
-
 const TreeAntd = () => {
-  const [gData, setGData] = useState(defaultData); //데이터 호출?
-  const expandedKeys: string[] = ["0-0", "0-0-0", "0-0-0-0"];
+  const [treeData, setTreeData] = useState(convertDataToTree(data));
+  const [expandedKeys, setExpandedKeys] = useState([]);
 
-  const onDragEnter = (info: any) => {
+  const onDragEnter = (info) => {
+    // You can implement logic here if needed
     console.log(info);
-    // expandedKeys, set it when controlled is needed
-    // setExpandedKeys(info.expandedKeys)
   };
 
-  const onDrop = (info: any) => {
-    console.log(info);
-    // ... (rest of your onDrop function remains unchanged)
+  const onDrop = (info) => {
+    const dragKey = info.dragNode.key;
+    const dropKey = info.node.key;
+    const dropPos = info.dropPosition - Number(info.node.pos.split("-").pop());
+
+    const loop = (data, key, callback) => {
+      data.forEach((item, index, arr) => {
+        if (item.key === key) {
+          callback(item, index, arr);
+          return;
+        }
+        if (item.children) {
+          loop(item.children, key, callback);
+        }
+      });
+    };
+
+    const data = [...treeData];
+    let dragObj;
+
+    loop(data, dragKey, (item) => {
+      dragObj = item;
+    });
+
+    const dropObj = { ...info.node.props };
+    const index = info.dropToGap
+      ? Number(dropObj.pos.split("-").pop())
+      : dropObj.children.length;
+
+    loop(data, dropKey, (item) => {
+      item.children = item.children || [];
+      item.children.splice(index, 0, dragObj);
+    });
+
+    setTreeData(data);
+    setExpandedKeys([...expandedKeys, dropKey]);
+  };
+
+  const onExpand = (expandedKeysValue) => {
+    setExpandedKeys(expandedKeysValue);
   };
 
   return (
@@ -61,7 +128,8 @@ const TreeAntd = () => {
       blockNode
       onDragEnter={onDragEnter}
       onDrop={onDrop}
-      treeData={gData}
+      onExpand={onExpand}
+      treeData={treeData}
     />
   );
 };
