@@ -130,7 +130,6 @@
       return new Promise((resolve, reject) => {
         if (name) {
           setTimeout(() => {
-            console.log(name);
             resolve();
           }, time);
         } else {
@@ -144,8 +143,7 @@
       .then(() => addName(2000, "John 2"))
       //rejact -> No such name
       .then(() => addName(2000, ""))
-      .then(() => addName(2000, "Sarah 2"))
-      .catch((err) => console.log(err));
+      .then(() => addName(2000, "Sarah 2"));
   </script>
 
   <script>
@@ -162,7 +160,6 @@
     let singleUser = users.map((user) => {
       //let's add the firstname and lastname together
 
-      console.log(user.firstName);
       let fullName = user.firstName + " " + user.lastName;
       return `
     <h3 class='name'>${fullName}</h3>
@@ -190,12 +187,7 @@
     //for senior people
     const seniorPeople = usersa.filter((person) => person.age >= 50);
 
-    console.log(seniorPeople);
-    console.log(youngPeople);
-
     const Bruno = usersa.find((person) => person.firstName === "Bruno");
-
-    console.log(Bruno);
   </script>
   <!-- destructuring -->
   <script>
@@ -203,7 +195,6 @@
     // let [fruit1, fruit2, fruit3] = fruits;
     // const [fruit1, , , , fruit5] = fruits;
     const [, fruit2, , fruit4] = fruits;
-    console.log(fruit2, fruit4);
   </script>
   <!-- destructuring Object-->
   <script>
@@ -222,18 +213,12 @@
       hobbies: { hobby1 },
     } = Roran;
 
-    console.log(firstName, age, hobby1);
-
-    function individualData({ firstName, age, hobbies: { hobby1 } }) {
-      console.log(firstName, age, hobby1); //"Roran" 14 "singing"
-    }
+    function individualData({ firstName, age, hobbies: { hobby1 } }) {}
     individualData(Roran);
   </script>
   <!-- Rest Operator -->
   <script>
     const [firstFruit, secondFruit, ...rest] = fruits;
-
-    console.log(firstFruit, secondFruit, rest);
   </script>
 
   <script>
@@ -249,8 +234,6 @@
 
     const { ages, ...resta } = Paka;
     const gogoring = resta.firstName === "Pakag";
-    console.log(gogoring);
-    console.log(age, resta);
   </script>
 
   <script>
@@ -258,7 +241,6 @@
 
     let carnivorous = ["lion", "wolf", "leopard", "tiger"];
     let animals = [...pets, ...carnivorous];
-    console.log(animals);
   </script>
   <!-- reduce -->
   <script>
@@ -275,7 +257,6 @@
       total += staff.salary;
       return total;
     }, 0);
-    console.log(totalSalary); // 2150
     const salaryInfo = staffs.reduce(
       (total, staff) => {
         let staffTithe = staff.salary * 0.1;
@@ -285,8 +266,6 @@
       },
       { totalSalary: 0, totalTithe: 0 }
     );
-
-    console.log(salaryInfo); // { totalSalary: 2150 , totalTithe: 215 }
   </script>
   <script>
     let users2 = [
@@ -311,19 +290,14 @@
       },
     ];
 
-    users2.forEach((user) => {
-      console.log(user.hobbies && user.hobbies.hobby2);
-    });
+    users2.forEach((user) => {});
 
-    users2.forEach((user) => {
-      console.log(user?.hobbies?.hobby2);
-    });
+    users2.forEach((user) => {});
   </script>
   <!-- Fetch Api -->
   <script>
     fetch("https://type.fit/api/quotes")
       .then((response) => response.json())
-      .then((data) => console.log(data))
       .catch((err) => console.log(err));
 
     fetch("https://type.fit/api/quotes")
@@ -333,7 +307,6 @@
         }
         return response.json();
       })
-      .then((data) => console.log(data))
       .catch((err) => console.log(err));
   </script>
   <!-- Async/Await in JavaScript -->
@@ -341,7 +314,6 @@
     const fetchData = async () => {
       const quotes = await fetch("https://type.fit/api/quotes");
       const response = await quotes.json();
-      console.log(response);
     };
 
     fetchData();
@@ -350,7 +322,6 @@
       try {
         const quotes = await fetch("https://type.fit/api/quotes");
         const response = await quotes.json();
-        console.log(response);
       } catch (error) {
         console.log(error);
       }

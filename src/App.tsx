@@ -6,7 +6,7 @@ import { Dashboard } from "./Dashboard";
 import { authProvider } from "./authProvider";
 import PostIcon from "@mui/icons-material/Book";
 import UserIcon from "@mui/icons-material/Group";
-import { TestTree, TreeAntd } from "./pages/Tree";
+import { DraggableTree, TestTree, TreeAntd } from "./pages/Tree";
 import AdbIcon from "@mui/icons-material/Adb";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 
@@ -36,7 +36,7 @@ export const App = () => (
     />
     <Resource
       name="services/obpcommon/api/sojeon"
-      list={TreeAntd}
+      list={DraggableTree}
       icon={AddIcCallIcon}
     />
     <Resource name="test/domain/value" list={TestTree} icon={AdbIcon} />

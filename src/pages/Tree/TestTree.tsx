@@ -21,7 +21,6 @@ const generateData = (_level: number, _preKey?: string, _tns?: any[]) => {
     if (i < y) {
       children.push(key);
     }
-    console.log("HI: " + JSON.stringify(tns));
   }
 
   if (_level < 0) {
@@ -39,12 +38,6 @@ generateData(5);
 const TestTree = () => {
   const [gData, setGData] = useState(defaultData);
 
-  const expandedKeys: string[] = ["0-0", "0-0-0", "0-0-0-0", "0-0-0-0-0"];
-
-  //   const onDragEnter = (info: any) => {
-  //     console.log(info);
-  //   };
-
   // 데이터 드래그 & 드랍 로직
   const onDrop = (info: any) => {
     const dropKey = info.node.key;
@@ -52,7 +45,7 @@ const TestTree = () => {
     const dropPos = info.node.pos.split("-");
     const dropPosition =
       info.dropPosition - Number(dropPos[dropPos.length - 1]);
-
+    console.log(info.dragNode);
     const loop = (
       data: any,
       key: string,
@@ -106,13 +99,12 @@ const TestTree = () => {
       }
     }
     setGData(data);
-    console.log(info);
   };
 
   return (
     <Tree
-      className="draggable-tree"
-      defaultExpandedKeys={expandedKeys}
+      // className="draggable-tree"
+      // defaultExpandedKeys={expandedKeys}
       draggable
       blockNode
       //   onDragEnter={onDragEnter}
